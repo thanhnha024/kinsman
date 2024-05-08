@@ -3,7 +3,7 @@
 add_theme_support('woocommerce');
 
 
-add_filter('woocommerce_loop_add_to_cart_link', 'replace_default_button');
+//add_filter('woocommerce_loop_add_to_cart_link', 'replace_default_button');
 function replace_default_button()
 {
 
@@ -16,14 +16,14 @@ function remove_price_from_loop()
   return "";
 }
 // add_action( 'woocommerce_after_shop_loop_item_title', 'woocommerce_template_loop_price', 10 );
-add_action('woocommerce_get_price_html', 'remove_price_from_loop', 10);
+//add_action('woocommerce_get_price_html', 'remove_price_from_loop', 10);
 // Enqueue/Add CSS and JS files
 add_theme_support('wc-product-gallery-zoom');
 add_theme_support('wc-product-gallery-lightbox');
 add_theme_support('wc-product-gallery-slider');
 
 
-add_action('woocommerce_after_order_notes', 'custom_checkout_field');
+//add_action('woocommerce_after_order_notes', 'custom_checkout_field');
 
 function custom_checkout_field($checkout)
 
