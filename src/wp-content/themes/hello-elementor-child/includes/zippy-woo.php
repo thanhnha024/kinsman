@@ -1,57 +1,18 @@
 <?php
-
-add_theme_support('woocommerce');
-
-
-//add_filter('woocommerce_loop_add_to_cart_link', 'replace_default_button');
-function replace_default_button()
+// shortcode create search product button [search_products]
+function search_products_shortcode()
 {
-
-  //replace default button code with custom code
-  return '';
+  ob_start();
+?>
+  <form role="search" method="get" id="searchform" action="<?php echo esc_url(home_url('/')); ?>">
+    <div class="flex-search-product">
+      <label class="screen-reader-text" for="s"><?php _e('Search for:'); ?></label>
+      <input type="text" value="<?php echo get_search_query(); ?>" name="s" id="s" placeholder="Search Products" />
+      <input type="hidden" name="post_type" value="product" />
+      <button type="submit" id="searchsubmit"><?php _e('Search'); ?></button>
+    </div>
+  </form>
+<?php
+  return ob_get_clean();
 }
-
-function remove_price_from_loop()
-{
-  return "";
-}
-// add_action( 'woocommerce_after_shop_loop_item_title', 'woocommerce_template_loop_price', 10 );
-//add_action('woocommerce_get_price_html', 'remove_price_from_loop', 10);
-// Enqueue/Add CSS and JS files
-add_theme_support('wc-product-gallery-zoom');
-add_theme_support('wc-product-gallery-lightbox');
-add_theme_support('wc-product-gallery-slider');
-
-
-//add_action('woocommerce_after_order_notes', 'custom_checkout_field');
-
-function custom_checkout_field($checkout)
-
-{
-
-  echo '<div id="custom_checkout_field"><h3>' . __('Please Provide The Custom Data') . '</h3>';
-
-  woocommerce_form_field(
-    'custom_field_name',
-    array(
-
-      'type' => 'text',
-      'required' => 'true',
-
-      'class' => array(
-
-        'my-field-class form-row-wide'
-
-      ),
-
-      'label' => __('Custom Field'),
-
-      'placeholder' => __('Enter Custom Data'),
-
-    ),
-
-    $checkout->get_value('custom_field_name')
-  );
-
-  echo '</div>';
-}
+add_shortcode('search_products', 'search_products_shortcode');
