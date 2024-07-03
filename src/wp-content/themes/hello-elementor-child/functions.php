@@ -13,5 +13,5 @@ if (!defined('THEME_URL'))
  * Include framework files
  */
 foreach (glob(THEME_DIR.'-child' . "/includes/*.php") as $file_name) {
-    require_once ( $file_name );
+    // require_once ( $file_name );
 }
