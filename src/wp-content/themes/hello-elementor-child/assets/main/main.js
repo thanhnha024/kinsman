@@ -1,1 +1,1 @@
-const shin=0;
+"use strict";($=jQuery)(document).ready(function(){$("#home-baner-video video")[0].play(),console.log("shin")});

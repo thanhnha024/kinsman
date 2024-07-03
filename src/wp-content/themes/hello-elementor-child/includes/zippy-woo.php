@@ -15,4 +15,4 @@ function search_products_shortcode()
 <?php
   return ob_get_clean();
 }
-// add_shortcode('search_products', 'search_products_shortcode');
+add_shortcode('search_products', 'search_products_shortcode');
